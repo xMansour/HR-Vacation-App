@@ -22,18 +22,18 @@
                     <content>
                         <Pane minHeight="0.0" minWidth="0.0" prefHeight="454.0" prefWidth="250.0">
                             <TextField fx:id="employeeIdTextField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="139.0" promptText="Employee ID" />
-                            <Button fx:id="getEmployeeBtn" layoutX="171.0" layoutY="14.0" mnemonicParsing="false" text="Get Employee" />
+                            <Button onAction="#getEmployeeById" layoutX="171.0" layoutY="14.0" mnemonicParsing="false" text="Get Employee" />
                         </Pane>
                     </content>
                 </Tab>
                 <Tab text="Create Employee">
                     <content>
                         <Pane minHeight="0.0" minWidth="0.0" prefHeight="388.0" prefWidth="303.0">
-                            <TextField fx:id="employeeFirstNameTextFiled" layoutX="127.0" layoutY="26.0" promptText="Employee First Name" />
-                            <TextField fx:id="employeeLastNameTextFiled" layoutX="127.0" layoutY="68.0" promptText="Employee Last Name" />
-                            <TextField fx:id="employeeAnnualVacationTextFiled" layoutX="127.0" layoutY="111.0" text="15" />
-                            <TextField fx:id="employeeSickVacationTextFiled" layoutX="127.0" layoutY="154.0" text="7" />
-                            <Button fx:id="createEmployeeBtn" layoutX="14.0" layoutY="201.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="260.0" text="Create Employee">
+                            <TextField fx:id="employeeFirstNameTextField" layoutX="127.0" layoutY="26.0" promptText="Employee First Name" />
+                            <TextField fx:id="employeeLastNameTextField" layoutX="127.0" layoutY="68.0" promptText="Employee Last Name" />
+                            <TextField fx:id="employeeAnnualVacationTextField" layoutX="127.0" layoutY="111.0" text="15" />
+                            <TextField fx:id="employeeSickVacationTextField" layoutX="127.0" layoutY="154.0" text="7" />
+                            <Button onAction="#createNewEmployee" layoutX="14.0" layoutY="201.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="260.0" text="Create Employee">
                                 <font>
                                     <Font name="System Bold" size="12.0" />
                                 </font>
