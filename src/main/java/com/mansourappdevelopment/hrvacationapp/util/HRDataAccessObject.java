@@ -14,6 +14,8 @@ public abstract class HRDataAccessObject<T extends DataTransferObject> {
 
     public abstract T getEmployeeById(int id);
 
+    public abstract T getEmployeeByUserName(String userName);
+
     public abstract List<T> getAllEmployees();
 
     public abstract void createNewEmployee(T dto);

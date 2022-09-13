@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -86,15 +87,6 @@ public class HRController implements Initializable {
         passwordCol.setCellValueFactory(new PropertyValueFactory<>("password"));
         annualVacationCountCol.setCellValueFactory(new PropertyValueFactory<>("annualVacationCount"));
         sickVacationCountCol.setCellValueFactory(new PropertyValueFactory<>("sickVacationCount"));
-
-        DBConnectionManager dbConnectionManager = new DBConnectionManager("config.properties");
-        Connection connection = dbConnectionManager.getConnection();
-        if (!Validator.tableExists(connection)) {
-            DBManager dbManager = new DBManager(connection);
-            dbManager.setUpDatabase();
-        }
-        hrdao = new HRDAO(connection);
-        updateEmployeesTable(hrdao.getAllEmployees());
     }
 
     public void createNewEmployee(ActionEvent event) {
@@ -147,5 +139,10 @@ public class HRController implements Initializable {
             hrdao.deleteEmployee(Integer.parseInt(id));
             updateEmployeesTable(hrdao.getAllEmployees());
         }
+    }
+
+    public void setHrdao(HRDAO hrdao) {
+        this.hrdao = hrdao;
+        updateEmployeesTable(hrdao.getAllEmployees());
     }
 }

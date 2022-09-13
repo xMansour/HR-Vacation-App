@@ -17,10 +17,29 @@ public class HRDAO extends HRDataAccessObject<Employee> {
 
     @Override
     public Employee getEmployeeById(int id) {
-        String findEmployeeById = "SELECT * FROM EMPLOYEES WHERE ID  = ?";
+        String select = "SELECT * FROM EMPLOYEES WHERE ID  = ?";
         Employee employee = null;
-        try (PreparedStatement statement = this.connection.prepareStatement(findEmployeeById)) {
+        try (PreparedStatement statement = this.connection.prepareStatement(select)) {
             statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                employee = new Employee(resultSet.getInt(1), resultSet.getString(2),
+                        resultSet.getString(3), resultSet.getString(4),
+                        resultSet.getString(5), resultSet.getInt(6), resultSet.getInt(7));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return employee;
+    }
+
+    @Override
+    public Employee getEmployeeByUserName(String userName) {
+        String select = "SELECT * FROM EMPLOYEES WHERE USER_NAME  = ?";
+        Employee employee = null;
+        try (PreparedStatement statement = this.connection.prepareStatement(select)) {
+            statement.setString(1, userName);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 employee = new Employee(resultSet.getInt(1), resultSet.getString(2),
