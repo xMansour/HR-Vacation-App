@@ -72,9 +72,16 @@ public class HRDAO extends HRDataAccessObject<Employee> {
     public void updateEmployee(Employee dto) {
     }
 
-    //TODO:: implement the delete method
     @Override
-    public void deleteEmployee(long id) {
+    public void deleteEmployee(int id) {
+        String delete = "DELETE FROM EMPLOYEES WHERE ID = ?";
+        try (PreparedStatement statement = this.connection.prepareStatement(delete)) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
 }

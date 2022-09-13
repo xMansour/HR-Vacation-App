@@ -7,7 +7,7 @@
 <Pane prefHeight="411.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mansourappdevelopment.hrvacationapp.controller.HRController">
     <children>
         <TableView fx:id="employeesTable" layoutX="292.0" layoutY="3.0" prefHeight="405.0" prefWidth="455.0">
-           <columns>
+            <columns>
                 <TableColumn fx:id="idCol" prefWidth="85.0" text="Employee ID" />
                 <TableColumn fx:id="firstNameCol" prefWidth="82.0" text="First Name" />
                 <TableColumn fx:id="lastNameCol" prefWidth="82.0" text="Last Name" />
@@ -21,8 +21,13 @@
                 <Tab text="Get Employee">
                     <content>
                         <Pane minHeight="0.0" minWidth="0.0" prefHeight="454.0" prefWidth="250.0">
-                            <TextField fx:id="employeeIdTextField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="139.0" promptText="Employee ID" />
-                            <Button onAction="#getEmployeeById" layoutX="171.0" layoutY="14.0" mnemonicParsing="false" text="Get Employee" />
+                            <TextField fx:id="employeeIdTextField" layoutX="100.0" layoutY="27.0" prefHeight="25.0" prefWidth="161.0" promptText="Employee ID" />
+                            <Button layoutX="15.0" layoutY="108.0" mnemonicParsing="false" onAction="#getEmployeeById" prefHeight="33.0" prefWidth="260.0" text="Get Employee">
+                                <font>
+                                    <Font name="System Bold" size="12.0" />
+                                </font>
+                            </Button>
+                            <Label layoutX="15.0" layoutY="31.0" prefHeight="17.0" prefWidth="67.0" text="Employee ID" />
                         </Pane>
                     </content>
                 </Tab>
@@ -33,7 +38,7 @@
                             <TextField fx:id="employeeLastNameTextField" layoutX="127.0" layoutY="68.0" promptText="Employee Last Name" />
                             <TextField fx:id="employeeAnnualVacationTextField" layoutX="127.0" layoutY="111.0" text="15" />
                             <TextField fx:id="employeeSickVacationTextField" layoutX="127.0" layoutY="154.0" text="7" />
-                            <Button onAction="#createNewEmployee" layoutX="14.0" layoutY="201.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="260.0" text="Create Employee">
+                            <Button layoutX="14.0" layoutY="201.0" mnemonicParsing="false" onAction="#createNewEmployee" prefHeight="33.0" prefWidth="260.0" text="Create Employee">
                                 <font>
                                     <Font name="System Bold" size="12.0" />
                                 </font>
@@ -42,6 +47,44 @@
                             <Label layoutX="10.0" layoutY="72.0" prefHeight="17.0" prefWidth="67.0" text="Last Name" />
                             <Label layoutX="10.0" layoutY="115.0" prefHeight="17.0" prefWidth="91.0" text="Annual Vacation" />
                             <Label layoutX="10.0" layoutY="158.0" prefHeight="17.0" prefWidth="91.0" text="Sick Vacation" />
+                        </Pane>
+                    </content>
+                </Tab>
+                <Tab text="Update Employee">
+                    <content>
+                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="388.0" prefWidth="303.0">
+                            <children>
+                                <TextField fx:id="employeeUpdatedIdTextField" layoutX="127.0" layoutY="14.0" promptText="Employee ID" />
+                                <TextField fx:id="employeeUpdatedFirstNameTextField" layoutX="127.0" layoutY="54.0" promptText="New First Name" />
+                                <TextField fx:id="employeeUpdatedLastNameTextField" layoutX="127.0" layoutY="96.0" promptText="New Last Name" />
+                                <TextField fx:id="employeeUpdatedAnnualVacationTextField" layoutX="127.0" layoutY="139.0" promptText="New Annual Vacation" />
+                                <TextField fx:id="employeeUpdatedSickVacationTextField" layoutX="127.0" layoutY="182.0" promptText="New Sick Vacation" />
+                                <Button layoutX="14.0" layoutY="229.0" mnemonicParsing="false" onAction="#updateEmployee" prefHeight="33.0" prefWidth="260.0" text="Update Employee">
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Button>
+                                <Label layoutX="10.0" layoutY="58.0" prefHeight="17.0" prefWidth="106.0" text="New First Name" />
+                                <Label layoutX="10.0" layoutY="100.0" prefHeight="17.0" prefWidth="99.0" text="New Last Name" />
+                                <Label layoutX="10.0" layoutY="143.0" prefHeight="17.0" prefWidth="119.0" text="New Annual Vacation" />
+                                <Label layoutX="10.0" layoutY="186.0" prefHeight="17.0" prefWidth="113.0" text="New Sick Vacation" />
+                                <Label layoutX="10.0" layoutY="18.0" prefHeight="17.0" prefWidth="67.0" text="Employee ID" />
+                            </children>
+                        </Pane>
+                    </content>
+                </Tab>
+                <Tab text="Delete Employee">
+                    <content>
+                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="388.0" prefWidth="303.0">
+                            <children>
+                                <TextField fx:id="employeeDeletedIdTextField" layoutX="127.0" layoutY="26.0" promptText="Employee ID" />
+                                <Button layoutX="14.0" layoutY="201.0" mnemonicParsing="false" onAction="#deleteEmployee" prefHeight="33.0" prefWidth="260.0" text="Delete Employee">
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Button>
+                                <Label layoutX="10.0" layoutY="30.0" prefHeight="17.0" prefWidth="67.0" text="Employee ID" />
+                            </children>
                         </Pane>
                     </content>
                 </Tab>

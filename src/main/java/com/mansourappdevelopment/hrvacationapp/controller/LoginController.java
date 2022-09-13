@@ -31,7 +31,7 @@ public class LoginController {
         String password = passwordInputField.getText();
         if (Validator.validUserName(userName)) {
             if (userName.equals("hr")) {
-                if (password.equals("hr")) {
+                if (Validator.validPassword(password) && password.equals("hr")) {
                     Parent root = FXMLLoader.load(getClass().getResource("/com/mansourappdevelopment/hrvacationapp/hr-view.fxml"));
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     Scene scene = new Scene(root);
@@ -42,6 +42,7 @@ public class LoginController {
                     //TODO:: Password wrong, Needs Alert
                 }
             }
+            //TODO:: Validate password and login as employee
         }
 
     }

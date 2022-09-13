@@ -20,5 +20,5 @@ public abstract class HRDataAccessObject<T extends DataTransferObject> {
 
     public abstract void updateEmployee(T dto);
 
-    public abstract void deleteEmployee(long id);
+    public abstract void deleteEmployee(int id);
 }

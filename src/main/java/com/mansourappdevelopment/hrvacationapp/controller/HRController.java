@@ -5,6 +5,7 @@ import com.mansourappdevelopment.hrvacationapp.dao.HRDAO;
 import com.mansourappdevelopment.hrvacationapp.model.Employee;
 import com.mansourappdevelopment.hrvacationapp.util.DBConnectionManager;
 import com.mansourappdevelopment.hrvacationapp.util.DBManager;
+import com.mansourappdevelopment.hrvacationapp.util.Validator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,9 +28,19 @@ import java.util.ResourceBundle;
 
 public class HRController implements Initializable {
     @FXML
-    private TextField employeeIdTextField;
+    public TextField employeeDeletedIdTextField;
     @FXML
-    private Button getEmployeeBtn;
+    private TextField employeeUpdatedIdTextField;
+    @FXML
+    private TextField employeeUpdatedFirstNameTextField;
+    @FXML
+    private TextField employeeUpdatedLastNameTextField;
+    @FXML
+    private TextField employeeUpdatedAnnualVacationTextField;
+    @FXML
+    public TextField employeeUpdatedSickVacationTextField;
+    @FXML
+    private TextField employeeIdTextField;
     @FXML
     private TextField employeeFirstNameTextField;
     @FXML
@@ -107,12 +118,24 @@ public class HRController implements Initializable {
 
     public void getEmployeeById(ActionEvent event) {
         ArrayList<Employee> emp = null;
-        if (employeeIdTextField.getText().equals("")) {
-            updateEmployeesTable(hrdao.getAllEmployees());
-        } else {
+        String id = employeeIdTextField.getText();
+        if (Validator.validId(id)) {
             emp = new ArrayList<>();
             emp.add(hrdao.findEmployeeById(Integer.parseInt(employeeIdTextField.getText())));
             updateEmployeesTable(emp);
+        } else {
+            updateEmployeesTable(hrdao.getAllEmployees());
+        }
+    }
+
+    public void updateEmployee(ActionEvent event) {
+    }
+
+    public void deleteEmployee(ActionEvent event) {
+        String id = employeeDeletedIdTextField.getText();
+        if (Validator.validId(id)) {
+            hrdao.deleteEmployee(Integer.parseInt(id));
+            updateEmployeesTable(hrdao.getAllEmployees());
         }
     }
 }
