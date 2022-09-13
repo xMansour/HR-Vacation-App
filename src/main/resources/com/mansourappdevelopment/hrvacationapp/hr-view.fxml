@@ -6,13 +6,13 @@
 
 <Pane prefHeight="411.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mansourappdevelopment.hrvacationapp.controller.HRController">
     <children>
-        <TableView layoutX="292.0" layoutY="3.0" prefHeight="405.0" prefWidth="455.0">
-            <columns>
-                <TableColumn prefWidth="85.0" text="Employee ID" />
-                <TableColumn prefWidth="82.0" text="First Name" />
-                <TableColumn prefWidth="82.0" text="Last Name" />
-                <TableColumn prefWidth="113.0" text="Annual Vacation" />
-                <TableColumn prefWidth="94.0" text="Sick Vacation" />
+        <TableView fx:id="employeesTable" layoutX="292.0" layoutY="3.0" prefHeight="405.0" prefWidth="455.0">
+           <columns>
+                <TableColumn fx:id="idCol" prefWidth="85.0" text="Employee ID" />
+                <TableColumn fx:id="firstNameCol" prefWidth="82.0" text="First Name" />
+                <TableColumn fx:id="lastNameCol" prefWidth="82.0" text="Last Name" />
+                <TableColumn fx:id="annualVacationCountCol" prefWidth="113.0" text="Annual Vacation" />
+                <TableColumn fx:id="sickVacationCountCol" prefWidth="94.0" text="Sick Vacation" />
             </columns>
         </TableView>
 

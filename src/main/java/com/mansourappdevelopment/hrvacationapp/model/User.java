@@ -12,9 +12,10 @@ public class User implements DataTransferObject {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
     @Override
     public int getId() {
-        return 0;
+        return id;
     }
 
     public void setId(Integer id) {

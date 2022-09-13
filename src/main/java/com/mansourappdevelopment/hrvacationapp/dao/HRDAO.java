@@ -26,7 +26,7 @@ public class HRDAO extends HRDataAccessObject<Employee> {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 employee = new Employee(resultSet.getInt(1), resultSet.getString(2),
-                        resultSet.getString(3));
+                        resultSet.getString(3), resultSet.getInt(4), resultSet.getInt(5));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -43,7 +43,7 @@ public class HRDAO extends HRDataAccessObject<Employee> {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 employees.add(new Employee(resultSet.getInt(1), resultSet.getString(2),
-                        resultSet.getString(3)));
+                        resultSet.getString(3), resultSet.getInt(4), resultSet.getInt(5)));
             }
         } catch (SQLException e) {
             e.printStackTrace();

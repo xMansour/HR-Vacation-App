@@ -1,12 +1,14 @@
 package com.mansourappdevelopment.hrvacationapp.model;
 
 public class Employee extends User {
-    private int annualVacationCount = 15;
-    private int sickVacationCount = 7;
+    private int annualVacationCount;
+    private int sickVacationCount;
     private Vacation vacationRequest;
 
-    public Employee(Integer id, String firstName, String lastName) {
+    public Employee(Integer id, String firstName, String lastName, int annualVacationCount, int sickVacationCount) {
         super(id, firstName, lastName);
+        this.annualVacationCount = annualVacationCount;
+        this.sickVacationCount = sickVacationCount;
     }
 
     public int getAnnualVacationCount() {
