@@ -1,10 +1,9 @@
-package com.mansourappdevelopment.hrvacationapp;
+package com.mansourappdevelopment.hrvacationapp.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class HelloController {
+public class LoginController {
 
     @FXML
     private ImageView passwordImage;
