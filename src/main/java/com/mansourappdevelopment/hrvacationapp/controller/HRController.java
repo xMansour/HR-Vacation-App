@@ -27,7 +27,19 @@ import java.util.ResourceBundle;
 
 public class HRController implements Initializable {
     @FXML
-    public TextField employeeDeletedIdTextField;
+    private TableColumn userNameCol;
+    @FXML
+    private TableColumn passwordCol;
+    @FXML
+    private TextField employeePasswordTextField;
+    @FXML
+    private TextField employeeUserNameTextField;
+    @FXML
+    private TextField employeeDeletedIdTextField;
+    @FXML
+    private TextField employeeUpdatedPasswordTextField;
+    @FXML
+    private TextField employeeUpdatedUserNameTextField;
     @FXML
     private TextField employeeUpdatedIdTextField;
     @FXML
@@ -70,49 +82,35 @@ public class HRController implements Initializable {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        userNameCol.setCellValueFactory(new PropertyValueFactory<>("userName"));
+        passwordCol.setCellValueFactory(new PropertyValueFactory<>("password"));
         annualVacationCountCol.setCellValueFactory(new PropertyValueFactory<>("annualVacationCount"));
         sickVacationCountCol.setCellValueFactory(new PropertyValueFactory<>("sickVacationCount"));
 
         DBConnectionManager dbConnectionManager = new DBConnectionManager("config.properties");
         Connection connection = dbConnectionManager.getConnection();
-        if (!tableExists(connection)) {
+        if (!Validator.tableExists(connection)) {
             DBManager dbManager = new DBManager(connection);
             dbManager.setUpDatabase();
         }
         hrdao = new HRDAO(connection);
         updateEmployeesTable(hrdao.getAllEmployees());
-
     }
 
     public void createNewEmployee(ActionEvent event) {
         String firstName = employeeFirstNameTextField.getText();
         String lastName = employeeLastNameTextField.getText();
+        String userName = employeeUserNameTextField.getText();
+        String password = employeePasswordTextField.getText();
         int annualVacationCount = Integer.parseInt(employeeAnnualVacationTextField.getText());
         int sickVacationCount = Integer.parseInt(employeeSickVacationTextField.getText());
-        hrdao.createNewEmployee(new Employee(null, firstName, lastName, annualVacationCount, sickVacationCount));
+        hrdao.createNewEmployee(new Employee(null, firstName, lastName, userName, password, annualVacationCount, sickVacationCount));
         updateEmployeesTable(hrdao.getAllEmployees());
     }
 
     private void updateEmployeesTable(List<Employee> employeeList) {
         ObservableList<Employee> employees = FXCollections.observableArrayList(employeeList);
         employeesTable.setItems(employees);
-    }
-
-    private boolean tableExists(Connection connection) {
-        try {
-            DatabaseMetaData databaseMetaData = connection.getMetaData();
-            ResultSet resultSet = databaseMetaData.getTables(null, null, "EMPLOYEES",
-                    new String[]{"TABLE"});
-            resultSet.next();
-            if (resultSet.getString("TABLE_NAME").equals("EMPLOYEES"))
-                return true;
-            else
-                return false;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
     }
 
     public void getEmployeeById(ActionEvent event) {
@@ -130,14 +128,15 @@ public class HRController implements Initializable {
     public void updateEmployee(ActionEvent event) {
         String id = employeeUpdatedIdTextField.getText();
         String firstName = employeeUpdatedFirstNameTextField.getText();
-        String lastName = employeeLastNameTextField.getText();
+        String lastName = employeeUpdatedLastNameTextField.getText();
+        String userName = employeeUpdatedUserNameTextField.getText();
+        String password = employeeUpdatedPasswordTextField.getText();
         String annualVacation = employeeUpdatedAnnualVacationTextField.getText();
         String sickVacation = employeeUpdatedSickVacationTextField.getText();
 
         ArrayList<Employee> emp = new ArrayList<>();
-        emp.add(hrdao.updateEmployee(new Employee(Integer.parseInt(id), firstName, lastName, Integer.parseInt(annualVacation),
+        emp.add(hrdao.updateEmployee(new Employee(Integer.parseInt(id), firstName, lastName, userName, password, Integer.parseInt(annualVacation),
                 Integer.parseInt(sickVacation))));
-
         updateEmployeesTable(emp);
 
     }

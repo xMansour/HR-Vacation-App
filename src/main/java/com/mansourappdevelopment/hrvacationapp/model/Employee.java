@@ -5,8 +5,9 @@ public class Employee extends User {
     private int sickVacationCount;
     private Vacation vacationRequest;
 
-    public Employee(Integer id, String firstName, String lastName, int annualVacationCount, int sickVacationCount) {
-        super(id, firstName, lastName);
+
+    public Employee(Integer id, String firstName, String lastName, String userName, String password, int annualVacationCount, int sickVacationCount) {
+        super(id, firstName, lastName, userName, password);
         this.annualVacationCount = annualVacationCount;
         this.sickVacationCount = sickVacationCount;
     }
@@ -34,4 +35,6 @@ public class Employee extends User {
     public void setVacationRequest(Vacation vacationRequest) {
         this.vacationRequest = vacationRequest;
     }
+
+
 }

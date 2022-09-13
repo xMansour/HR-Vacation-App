@@ -41,8 +41,16 @@ public class LoginController {
                 } else {
                     //TODO:: Password wrong, Needs Alert
                 }
+            } else {
+                //TODO:: check if the entered data matches a user from the database
+
+                Parent root = FXMLLoader.load(getClass().getResource("/com/mansourappdevelopment/hrvacationapp/employee-view.fxml"));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+                System.out.println("Employee Login Successful");
             }
-            //TODO:: Validate password and login as employee
         }
 
     }

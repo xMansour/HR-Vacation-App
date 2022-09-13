@@ -1,8 +1,6 @@
 package com.mansourappdevelopment.hrvacationapp.dao;
 
 import com.mansourappdevelopment.hrvacationapp.model.Employee;
-import com.mansourappdevelopment.hrvacationapp.model.User;
-import com.mansourappdevelopment.hrvacationapp.util.DataTransferObject;
 import com.mansourappdevelopment.hrvacationapp.util.HRDataAccessObject;
 
 import java.sql.Connection;
@@ -26,7 +24,8 @@ public class HRDAO extends HRDataAccessObject<Employee> {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 employee = new Employee(resultSet.getInt(1), resultSet.getString(2),
-                        resultSet.getString(3), resultSet.getInt(4), resultSet.getInt(5));
+                        resultSet.getString(3), resultSet.getString(4),
+                        resultSet.getString(5), resultSet.getInt(6), resultSet.getInt(7));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -43,7 +42,8 @@ public class HRDAO extends HRDataAccessObject<Employee> {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 employees.add(new Employee(resultSet.getInt(1), resultSet.getString(2),
-                        resultSet.getString(3), resultSet.getInt(4), resultSet.getInt(5)));
+                        resultSet.getString(3), resultSet.getString(4),
+                        resultSet.getString(5), resultSet.getInt(6), resultSet.getInt(7)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,12 +54,14 @@ public class HRDAO extends HRDataAccessObject<Employee> {
 
     @Override
     public void createNewEmployee(Employee dto) {
-        String INSERT = "INSERT INTO EMPLOYEES (FIRST_NAME, LAST_NAME, ANNUAL_VACATION, SICK_VACATION) VALUES (?,?,?,?)";
+        String INSERT = "INSERT INTO EMPLOYEES (FIRST_NAME, LAST_NAME, USER_NAME, PASSWORD, ANNUAL_VACATION, SICK_VACATION) VALUES (?,?,?,?,?,?)";
         try (PreparedStatement statement = this.connection.prepareStatement(INSERT)) {
             statement.setString(1, dto.getFirstName());
             statement.setString(2, dto.getLastName());
-            statement.setInt(3, dto.getAnnualVacationCount());
-            statement.setInt(4, dto.getSickVacationCount());
+            statement.setString(3, dto.getUserName());
+            statement.setString(4, dto.getPassword());
+            statement.setInt(5, dto.getAnnualVacationCount());
+            statement.setInt(6, dto.getSickVacationCount());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,13 +71,15 @@ public class HRDAO extends HRDataAccessObject<Employee> {
 
     @Override
     public Employee updateEmployee(Employee dto) {
-        String update = "UPDATE EMPLOYEES SET FIRST_NAME=?, LAST_NAME=?, ANNUAL_VACATION=?, SICK_VACATION=? WHERE ID=?";
+        String update = "UPDATE EMPLOYEES SET FIRST_NAME=?, LAST_NAME=?, USER_NAME=?, PASSWORD=?, ANNUAL_VACATION=?, SICK_VACATION=? WHERE ID=?";
         try (PreparedStatement statement = this.connection.prepareStatement(update)) {
             statement.setString(1, dto.getFirstName());
             statement.setString(2, dto.getLastName());
-            statement.setInt(3, dto.getAnnualVacationCount());
-            statement.setInt(4, dto.getSickVacationCount());
-            statement.setInt(5, dto.getId());
+            statement.setString(3, dto.getUserName());
+            statement.setString(4, dto.getPassword());
+            statement.setInt(5, dto.getAnnualVacationCount());
+            statement.setInt(6, dto.getSickVacationCount());
+            statement.setInt(7, dto.getId());
             statement.executeUpdate();
             return getEmployeeById(dto.getId());
         } catch (SQLException e) {
