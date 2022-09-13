@@ -11,7 +11,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -121,7 +120,7 @@ public class HRController implements Initializable {
         String id = employeeIdTextField.getText();
         if (Validator.validId(id)) {
             emp = new ArrayList<>();
-            emp.add(hrdao.findEmployeeById(Integer.parseInt(employeeIdTextField.getText())));
+            emp.add(hrdao.getEmployeeById(Integer.parseInt(employeeIdTextField.getText())));
             updateEmployeesTable(emp);
         } else {
             updateEmployeesTable(hrdao.getAllEmployees());
@@ -129,6 +128,18 @@ public class HRController implements Initializable {
     }
 
     public void updateEmployee(ActionEvent event) {
+        String id = employeeUpdatedIdTextField.getText();
+        String firstName = employeeUpdatedFirstNameTextField.getText();
+        String lastName = employeeLastNameTextField.getText();
+        String annualVacation = employeeUpdatedAnnualVacationTextField.getText();
+        String sickVacation = employeeUpdatedSickVacationTextField.getText();
+
+        ArrayList<Employee> emp = new ArrayList<>();
+        emp.add(hrdao.updateEmployee(new Employee(Integer.parseInt(id), firstName, lastName, Integer.parseInt(annualVacation),
+                Integer.parseInt(sickVacation))));
+
+        updateEmployeesTable(emp);
+
     }
 
     public void deleteEmployee(ActionEvent event) {

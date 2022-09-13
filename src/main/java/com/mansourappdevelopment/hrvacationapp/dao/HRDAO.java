@@ -18,7 +18,7 @@ public class HRDAO extends HRDataAccessObject<Employee> {
     }
 
     @Override
-    public Employee findEmployeeById(int id) {
+    public Employee getEmployeeById(int id) {
         String findEmployeeById = "SELECT * FROM EMPLOYEES WHERE ID  = ?";
         Employee employee = null;
         try (PreparedStatement statement = this.connection.prepareStatement(findEmployeeById)) {
@@ -67,9 +67,22 @@ public class HRDAO extends HRDataAccessObject<Employee> {
         }
     }
 
-    //TODO:: implement the update method
     @Override
-    public void updateEmployee(Employee dto) {
+    public Employee updateEmployee(Employee dto) {
+        String update = "UPDATE EMPLOYEES SET FIRST_NAME=?, LAST_NAME=?, ANNUAL_VACATION=?, SICK_VACATION=? WHERE ID=?";
+        try (PreparedStatement statement = this.connection.prepareStatement(update)) {
+            statement.setString(1, dto.getFirstName());
+            statement.setString(2, dto.getLastName());
+            statement.setInt(3, dto.getAnnualVacationCount());
+            statement.setInt(4, dto.getSickVacationCount());
+            statement.setInt(5, dto.getId());
+            statement.executeUpdate();
+            return getEmployeeById(dto.getId());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override

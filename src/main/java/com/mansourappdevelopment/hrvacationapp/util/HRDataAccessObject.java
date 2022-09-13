@@ -12,13 +12,13 @@ public abstract class HRDataAccessObject<T extends DataTransferObject> {
         this.connection = connection;
     }
 
-    public abstract Employee findEmployeeById(int id);
+    public abstract T getEmployeeById(int id);
 
     public abstract List<T> getAllEmployees();
 
     public abstract void createNewEmployee(T dto);
 
-    public abstract void updateEmployee(T dto);
+    public abstract T updateEmployee(T dto);
 
     public abstract void deleteEmployee(int id);
 }
