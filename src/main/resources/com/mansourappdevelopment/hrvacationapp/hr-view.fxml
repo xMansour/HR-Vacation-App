@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="411.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mansourappdevelopment.hrvacationapp.controller.HRController">
+    <children>
+        <TableView layoutX="292.0" layoutY="3.0" prefHeight="405.0" prefWidth="455.0">
+            <columns>
+                <TableColumn prefWidth="85.0" text="Employee ID" />
+                <TableColumn prefWidth="82.0" text="First Name" />
+                <TableColumn prefWidth="82.0" text="Last Name" />
+                <TableColumn prefWidth="113.0" text="Annual Vacation" />
+                <TableColumn prefWidth="94.0" text="Sick Vacation" />
+            </columns>
+        </TableView>
+
+        <TabPane layoutX="-2.0" layoutY="-1.0" prefHeight="417.0" prefWidth="289.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Get Employee">
+                    <content>
+                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="454.0" prefWidth="250.0">
+                            <TextField fx:id="employeeIdTextField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="139.0" promptText="Employee ID" />
+                            <Button fx:id="getEmployeeBtn" layoutX="171.0" layoutY="14.0" mnemonicParsing="false" text="Get Employee" />
+                        </Pane>
+                    </content>
+                </Tab>
+                <Tab text="Create Employee">
+                    <content>
+                        <Pane minHeight="0.0" minWidth="0.0" prefHeight="388.0" prefWidth="303.0">
+                            <TextField fx:id="employeeFirstNameTextFiled" layoutX="127.0" layoutY="26.0" promptText="Employee First Name" />
+                            <TextField fx:id="employeeLastNameTextFiled" layoutX="127.0" layoutY="68.0" promptText="Employee Last Name" />
+                            <TextField fx:id="employeeAnnualVacationTextFiled" layoutX="127.0" layoutY="111.0" text="15" />
+                            <TextField fx:id="employeeSickVacationTextFiled" layoutX="127.0" layoutY="154.0" text="7" />
+                            <Button fx:id="createEmployeeBtn" layoutX="14.0" layoutY="201.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="260.0" text="Create Employee">
+                                <font>
+                                    <Font name="System Bold" size="12.0" />
+                                </font>
+                            </Button>
+                            <Label layoutX="10.0" layoutY="30.0" prefHeight="17.0" prefWidth="67.0" text="First Name" />
+                            <Label layoutX="10.0" layoutY="72.0" prefHeight="17.0" prefWidth="67.0" text="Last Name" />
+                            <Label layoutX="10.0" layoutY="115.0" prefHeight="17.0" prefWidth="91.0" text="Annual Vacation" />
+                            <Label layoutX="10.0" layoutY="158.0" prefHeight="17.0" prefWidth="91.0" text="Sick Vacation" />
+                        </Pane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</Pane>

@@ -11,9 +11,6 @@
 <?import javafx.scene.text.Font?>
 
 <Pane prefHeight="346.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mansourappdevelopment.hrvacationapp.controller.LoginController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
     <Button layoutX="86.0" layoutY="250.0" onAction="#onHelloButtonClick" prefHeight="58.0" prefWidth="239.0" text="Sign in" textFill="#5d7586">
         <font>
             <Font name="System Bold" size="28.0" />
@@ -24,8 +21,8 @@
             <Font name="Arial Bold" size="30.0" />
         </font>
     </Label>
-    <PasswordField layoutX="96.0" layoutY="176.0" prefHeight="36.0" prefWidth="218.0" promptText="Password" />
-    <TextField layoutX="96.0" layoutY="124.0" prefHeight="36.0" prefWidth="218.0" promptText="User Name" />
+    <PasswordField fx:id="passwordInputField" layoutX="96.0" layoutY="176.0" prefHeight="36.0" prefWidth="218.0" promptText="Password" />
+    <TextField fx:id="userNameInputFiled" layoutX="96.0" layoutY="124.0" prefHeight="36.0" prefWidth="218.0" promptText="User Name" />
     <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="47.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@assets/key.png" />
     </ImageView>

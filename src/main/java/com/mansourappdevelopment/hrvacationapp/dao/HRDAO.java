@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HRDAO extends HRDataAccessObject<Employee> {
@@ -35,9 +36,9 @@ public class HRDAO extends HRDataAccessObject<Employee> {
     }
 
     @Override
-    public List getAllEmployees() {
+    public List<Employee> getAllEmployees() {
         String getAllEmployees = "SELECT * FROM EMPLOYEES";
-        List<Employee> employees = null;
+        List<Employee> employees = new ArrayList<>();
         try (PreparedStatement statement = this.connection.prepareStatement(getAllEmployees)) {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {

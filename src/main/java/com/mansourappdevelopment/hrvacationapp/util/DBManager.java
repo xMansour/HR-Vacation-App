@@ -14,13 +14,13 @@ public class DBManager {
     public void setUpDatabase() {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("DROP TABLE IF EXISTS USERS");
+            statement.executeUpdate("DROP TABLE IF EXISTS EMPLOYEES");
             statement.executeUpdate("CREATE TABLE EMPLOYEES (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT," +
                     "LAST_NAME TEXT, ANNUAL_VACATION INTEGER, SICK_VACATION INTEGER)");
-            statement.executeUpdate("INSERT INTO USERS(FIRST_NAME, LAST_NAME, ANNUAL_VACATION, SICK_VACATION) VALUES('Mahmoud', 'Mansour', 15, 7)");
-            statement.executeUpdate("INSERT INTO USERS(FIRST_NAME, LAST_NAME, ANNUAL_VACATION, SICK_VACATION) VALUES('Khaled', 'Samir', 15, 7)");
-            statement.executeUpdate("INSERT INTO USERS(FIRST_NAME, LAST_NAME, ANNUAL_VACATION, SICK_VACATION) VALUES('Saeed', 'Mansour', 15, 8)");
-            statement.executeUpdate("INSERT INTO USERS(FIRST_NAME, LAST_NAME, ANNUAL_VACATION, SICK_VACATION) VALUES('Mohamed', 'Saeed', 20, 10)");
+            statement.executeUpdate("INSERT INTO EMPLOYEES(FIRST_NAME, LAST_NAME, ANNUAL_VACATION, SICK_VACATION) VALUES('Mahmoud', 'Mansour', 15, 7)");
+            statement.executeUpdate("INSERT INTO EMPLOYEES(FIRST_NAME, LAST_NAME, ANNUAL_VACATION, SICK_VACATION) VALUES('Khaled', 'Samir', 15, 7)");
+            statement.executeUpdate("INSERT INTO EMPLOYEES(FIRST_NAME, LAST_NAME, ANNUAL_VACATION, SICK_VACATION) VALUES('Saeed', 'Mansour', 15, 8)");
+            statement.executeUpdate("INSERT INTO EMPLOYEES(FIRST_NAME, LAST_NAME, ANNUAL_VACATION, SICK_VACATION) VALUES('Mohamed', 'Saeed', 20, 10)");
 
         } catch (SQLException e) {
             e.printStackTrace();
