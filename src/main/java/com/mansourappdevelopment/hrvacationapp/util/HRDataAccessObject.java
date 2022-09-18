@@ -1,11 +1,9 @@
 package com.mansourappdevelopment.hrvacationapp.util;
 
-import com.mansourappdevelopment.hrvacationapp.model.Employee;
-
 import java.sql.Connection;
 import java.util.List;
 
-public abstract class HRDataAccessObject<T extends DataTransferObject> {
+public abstract class HRDataAccessObject<T, V extends DataTransferObject> {
     protected final Connection connection;
 
     public HRDataAccessObject(Connection connection) {
@@ -23,4 +21,14 @@ public abstract class HRDataAccessObject<T extends DataTransferObject> {
     public abstract T updateEmployee(T dto);
 
     public abstract void deleteEmployee(int id);
+
+    public abstract List<V> getAllVacations();
+
+    public abstract void rejectVacation(int vacationId);
+
+    public abstract boolean hasVacationDaysLeft(V vacation);
+
+    public abstract void acceptVacation(V vacation);
+
+
 }

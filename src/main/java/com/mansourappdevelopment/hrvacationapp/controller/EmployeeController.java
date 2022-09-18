@@ -1,10 +1,9 @@
 package com.mansourappdevelopment.hrvacationapp.controller;
 
-import com.mansourappdevelopment.hrvacationapp.dao.HRDAO;
+import com.mansourappdevelopment.hrvacationapp.dao.EmployeeDAO;
 import com.mansourappdevelopment.hrvacationapp.model.Employee;
-import com.mansourappdevelopment.hrvacationapp.util.DBConnectionManager;
-import com.mansourappdevelopment.hrvacationapp.util.DBManager;
-import com.mansourappdevelopment.hrvacationapp.util.Validator;
+import com.mansourappdevelopment.hrvacationapp.model.Vacation;
+import com.mansourappdevelopment.hrvacationapp.util.Constants;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,7 +12,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 
 import java.net.URL;
-import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,6 +20,8 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class EmployeeController implements Initializable {
+    @FXML
+    private Label statusLabel;
     @FXML
     private DatePicker vacationStartDatePicker;
     @FXML
@@ -34,9 +34,8 @@ public class EmployeeController implements Initializable {
     private Label sickVacationLabel;
     @FXML
     private Label employeeNameLabel;
-    private HRDAO hrdao;
+    private EmployeeDAO employeeDAO;
     private Employee currentEmployee;
-    private Date endDate;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -44,9 +43,6 @@ public class EmployeeController implements Initializable {
         vacationTpeComboBox.setValue("Annual");
     }
 
-    public void setHrdao(HRDAO hrdao) {
-        this.hrdao = hrdao;
-    }
 
     public void setCurrentEmployee(Employee emp) {
         this.currentEmployee = emp;
@@ -87,20 +83,24 @@ public class EmployeeController implements Initializable {
                     daysCount++;
                 startCalendar.add(Calendar.DATE, 1);
             }
-            if (vacationType.equals("Annual")) {
+            if (vacationType.equals(Constants.ANNUAL_VACATION)) {
                 if (currentEmployee.getAnnualVacationCount() >= daysCount) {
-                    //TODO:: create a vacation request
+                    currentEmployee.setVacationRequest(new Vacation(Constants.ANNUAL_VACATION, daysCount));
+                    employeeDAO.createVacationRequest(currentEmployee);
+                    statusLabel.setText("Annual Vacation Request Successfully Made");
                     System.out.println("Annual Request made");
                 } else {
-                    //TODO:: Days off are more than the available days count
+                    statusLabel.setText("Requested Days Are More Than The Annual Vacation Days You Have Left");
                     System.out.println("Annual Request can't be made");
                 }
             } else {
                 if (currentEmployee.getSickVacationCount() >= daysCount) {
-                    //TODO:: create a vacation request
+                    currentEmployee.setVacationRequest(new Vacation(Constants.SICK_VACATION, daysCount));
+                    employeeDAO.createVacationRequest(currentEmployee);
+                    statusLabel.setText("Sick Vacation Request Successfully Made");
                     System.out.println("Sick Request made");
                 } else {
-                    //TODO:: Days off are more than the available days count
+                    statusLabel.setText("Requested Days Are More Than The Sick Vacation Days You Have Left");
                     System.out.println("Sick Request can't be made");
                 }
             }
@@ -109,5 +109,9 @@ public class EmployeeController implements Initializable {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    public void setEmployeeDAO(EmployeeDAO employeeDAO) {
+        this.employeeDAO = employeeDAO;
     }
 }

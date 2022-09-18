@@ -13,9 +13,10 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 410, 400);
+        Scene scene = new Scene(fxmlLoader.load(), 451, 380);
         stage.setTitle("HR Vacation App");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 
