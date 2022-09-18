@@ -18,10 +18,10 @@ HR Vacations App is a desktop app made with JavaFX to allow employees to effortl
    I used SQLite as it is embedded database, added as a maven dependency and independent of any software. However, the app can be modified to work with any other DBMS. You just need to modify the `dbUrl` in the `config.properties` file and add the DBMS `username` and `password`.
 
 
-## Cloning<a id='cloning'>  
-1. Clone this project through this link `https://github.com/xMansour/HR-Vacation-App.git`  
+## Cloning<a id='cloning'>
+1. Clone this project through this link `https://github.com/xMansour/HR-Vacation-App.git`
 2. Download all the maven dependencies by running this command `mvn dependency:copy-dependencies
-   `  
+   `
 ## How To Use<a id='howToUse'></a>
 First, you have to log in.
 

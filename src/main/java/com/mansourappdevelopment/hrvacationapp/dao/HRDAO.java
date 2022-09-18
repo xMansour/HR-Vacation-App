@@ -183,15 +183,18 @@ public class HRDAO extends HRDataAccessObject<Employee, Vacation> {
             acceptVacation = "UPDATE EMPLOYEES SET ANNUAL_VACATION = ANNUAL_VACATION - ? WHERE ID = ?";
         else
             acceptVacation = "UPDATE EMPLOYEES SET SICK_VACATION = SICK_VACATION - ? WHERE ID = ?";
-        try (PreparedStatement statement = this.connection.prepareStatement(acceptVacation)) {
-            statement.setInt(1, vacation.getDaysCount());
-            statement.setInt(2, vacation.getEmployeeId());
-            statement.executeUpdate();
+        if (hasVacationDaysLeft(vacation)) {
+            try (PreparedStatement statement = this.connection.prepareStatement(acceptVacation)) {
+                statement.setInt(1, vacation.getDaysCount());
+                statement.setInt(2, vacation.getEmployeeId());
+                statement.executeUpdate();
+                rejectVacation(vacation.getVacationId());
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+        } else
             rejectVacation(vacation.getVacationId());
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
     }
 
 }
