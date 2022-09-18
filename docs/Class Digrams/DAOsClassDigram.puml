@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface DataTransferObject{
+    +getId()
+}
+
+abstract class HRDataAccessObject<T, V extends DataTransferObject> {
+    # final Connection connection
+    + abstract T getEmployeeById(int id)
+    + abstract T getEmployeeByUserName(String userName)
+    + abstract List<T> getAllEmployees()
+    + abstract void createNewEmployee(T dto)
+    + abstract T updateEmployee(T dto)
+    + abstract void deleteEmployee(int id)
+    + abstract List<V> getAllVacations()
+    + abstract void rejectVacation(int vacationId)
+    + abstract boolean hasVacationDaysLeft(V vacation)
+    + abstract void acceptVacation(V vacation)
+}
+
+abstract class EmployeeDataAccessObject<T extends DataTransferObject>{
+    # final Connection connection
+    + abstract void createVacationRequest(Employee dto)
+}
+
+class HRDAO extends HRDataAccessObject {
+    + Employee getEmployeeById(int id)
+    + Employee getEmployeeByUserName(String userName)
+    + List<Employee> getAllEmployees()
+    + void createNewEmployee(Employee dto)
+    + Employee updateEmployee(Employee dto)
+    + void deleteEmployee(int id)
+    + List<Vacation> getAllVacations()
+    + void rejectVacation(int vacationId)
+    + boolean hasVacationDaysLeft(Vacation vacation)
+    + void acceptVacation(Vacation vacation)
+}
+
+class EmployeeDAO extends EmployeeDataAccessObject{
+    + void createVacationRequest(Employee dto)
+}
+
+
+
+@enduml

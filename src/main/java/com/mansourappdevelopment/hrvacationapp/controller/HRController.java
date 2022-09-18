@@ -42,7 +42,7 @@ public class HRController implements Initializable {
     @FXML
     private TextField employeeUpdatedAnnualVacationTextField;
     @FXML
-    public TextField employeeUpdatedSickVacationTextField;
+    private TextField employeeUpdatedSickVacationTextField;
     @FXML
     private TextField employeeIdTextField;
     @FXML

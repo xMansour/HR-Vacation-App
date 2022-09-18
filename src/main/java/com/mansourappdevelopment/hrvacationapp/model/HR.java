@@ -1,5 +1,6 @@
 package com.mansourappdevelopment.hrvacationapp.model;
 
+//This class was intended to make HRs but this functionality isn't added at the moment
 public class HR extends User {
     private boolean isHr;
 

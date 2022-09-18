@@ -1,0 +1,75 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class LoginController {
+    - Label statusLabel;
+    - PasswordField passwordInputField;
+    - TextField userNameInputFiled;
+    # void onHelloButtonClick(ActionEvent event) throws IOException
+}
+
+class HRController implements Initializable{
+        - Label statusLabel
+        - TextField employeePasswordTextField
+        - TextField employeeUserNameTextField
+        - TextField employeeDeletedIdTextField
+        - TextField employeeUpdatedPasswordTextField
+        - TextField employeeUpdatedUserNameTextField
+        - TextField employeeUpdatedIdTextField
+        - TextField employeeUpdatedFirstNameTextField
+        - TextField employeeUpdatedLastNameTextField
+        - TextField employeeUpdatedAnnualVacationTextField
+        - TextField employeeUpdatedSickVacationTextField
+        - TextField employeeIdTextField
+        - TextField employeeFirstNameTextField
+        - TextField employeeLastNameTextField
+        - TextField employeeAnnualVacationTextField
+        - TextField employeeSickVacationTextField
+        - TableView<Employee> employeesTable
+        - TableColumn<Employee, Integer> idCol
+        - TableColumn<Employee, String> firstNameCol
+        - TableColumn<Employee, String> lastNameCol
+        - TableColumn<Employee, Integer> annualVacationCountCol
+        - TableColumn<Employee, Integer> sickVacationCountCol
+        - TableColumn<Employee, String> userNameCol
+        - TableColumn<Employee, String> passwordCol
+        - TableView<Vacation> vacationsTable
+        - TableColumn<Vacation, Integer> vacationIdCol
+        - TableColumn<Vacation, Integer> vacationEmployeeIdCol
+        - TableColumn<Vacation, String> vacationEmployeeFirstNameCol
+        - TableColumn<Vacation, String> vacationEmployeeLastNameCol
+        - TableColumn<Vacation, String> vacationTypeCol
+        - TableColumn<Vacation, Integer> vacationDaysCount
+        - TableColumn<Vacation, Button> vacationActions
+        - HRDAO hrdao
+        + void initialize(URL url, ResourceBundle resourceBundle)
+        + void createNewEmployee(ActionEvent event)
+        + void getEmployeeById(ActionEvent event)
+        + void updateEmployee(ActionEvent event)
+        + void deleteEmployee(ActionEvent event)
+        + void setHrdao(HRDAO hrdao)
+        - void addAcceptButton(TableColumn<Vacation, Button> vacationActions)
+        - void updateEmployeesTable(List<Employee> employeeList)
+        - void updateVacationsTable(List<Vacation> employeeList)
+}
+
+class EmployeeController implements Initializable{
+    - Label statusLabel
+    - DatePicker vacationStartDatePicker
+    - DatePicker vacationEndDatePicker
+    - ComboBox<String> vacationTpeComboBox
+    - Label annualVacationLabel
+    - Label sickVacationLabel
+    - Label employeeNameLabel
+    - EmployeeDAO employeeDAO
+    - Employee currentEmployee
+    + void initialize(URL url, ResourceBundle resourceBundle)
+    + void setCurrentEmployee(Employee emp)
+    - void updateUi()
+    - void submitVacation(ActionEvent event)
+    + void setEmployeeDAO(EmployeeDAO employeeDAO)
+}
+
+
+
+@enduml

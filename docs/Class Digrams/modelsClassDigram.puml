@@ -1,0 +1,69 @@
+@startuml
+'https://plantuml.com/class-diagram
+interface DataTransferObject{
+    +getId()
+}
+class User implements DataTransferObject{
+    - Integer id
+    - String firstName
+    - String lastName
+    - String userName
+    - String password
+    + int getId()
+    + void setId(Integer id)
+    + void setFirstName(String firstName)
+    + String getFirstName()
+    + void setLastName(String lastName)
+    + String getLastName()
+    + void setUserName(String firstName)
+    + String getUserName()
+    + void setPassword(String password)
+    + String getPassword()
+    + String toString()
+}
+
+class HR extends User{
+    - boolean isHr
+    + boolean isHr()
+    + void setHr(boolean hr)
+}
+class Employee extends User{
+    - int annualVacationCount
+    - int sickVacationCount
+    - Vacation vacationRequest
+    + int getAnnualVacationCount()
+    + void setAnnualVacationCount(int annualVacationCount)
+    + int getSickVacationCount()
+    + void setSickVacationCount(int sickVacationCount)
+    + Vacation getVacationRequest()
+    + void setVacationRequest(Vacation vacationRequest)
+}
+
+class Vacation implements DataTransferObject{
+    - Integer vacationId
+    - Integer employeeId
+    - String employeeFirstName
+    - String employeeLastName
+    - String type
+    - int daysCount
+    + public int getId()
+    + String getType()
+    + void setType(String type)
+    + int getDaysCount()
+    + void setDaysCount(int daysCount)
+    + Integer getVacationId()
+    + void setVacationId(Integer vacationId)
+    + Integer getEmployeeId()
+    + void setEmployeeId(Integer employeeId)
+    + String getEmployeeFirstName()
+    + void setEmployeeFirstName(String employeeFirstName)
+    + String getEmployeeLastName()
+    + void setEmployeeLastName(String employeeLastName)
+    + String toString()
+}
+
+
+
+
+
+@enduml
