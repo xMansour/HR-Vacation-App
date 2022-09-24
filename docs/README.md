@@ -9,15 +9,15 @@ Class Diagrams are created using intellij plugin [PlantUML](https://plugins.jetb
 
 ## Models Class Diagrams<a id='modelsClassDiagrams'></a>  
 
-[<img src="/Class Digrams/modelsClassDigram.png"  hspace="10" vspace="10">]()
+<img src="/docs/Class Digrams/modelsClassDigram.png"  hspace="10" vspace="10">  
 
 ## DAOs Class Diagrams<a id='daosClassDiagrams'>  
 
-[<img src="/Class Digrams/DAOsClassDigram.png"  hspace="10" vspace="10">]()
+<img src="/docs/Class Digrams/DAOsClassDigram.png"  hspace="10" vspace="10">  
 
 ## Controllers Class Diagrams<a id='controllersClassDiagrams'>  
 
-[<img src="/Class Digrams/ControllersClassDigram.png"  hspace="10" vspace="10">]()
+<img src="/docs/Class Digrams/ControllersClassDigram.png"  hspace="10" vspace="10">  
 
 
 
