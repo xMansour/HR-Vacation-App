@@ -139,7 +139,7 @@ public class HRController implements Initializable {
             emp = new ArrayList<>();
             emp.add(hrdao.getEmployeeById(Integer.parseInt(employeeIdTextField.getText())));
             updateEmployeesTable(emp);
-            statusLabel.setText(emp.get(1).getFirstName() + " " + emp.get(1).getLastName() + " Retrieved Successfully");
+            statusLabel.setText(emp.get(0).getFirstName() + " " + emp.get(0).getLastName() + " Retrieved Successfully");
         } else {
             statusLabel.setText("Enter a Valid Employee ID");
             updateEmployeesTable(hrdao.getAllEmployees());
