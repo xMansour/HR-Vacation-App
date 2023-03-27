@@ -2,9 +2,9 @@
 
 ## Table of Contents
 1. [About The Project](#about)
-2. [Built With](#builtWith)
+2. [Built With](#built-with)
 3. [Cloning](#cloning)
-4. [How To Use](#howToUse)
+4. [How To Use](#how-to-use)
 
 
 ## About The Project<a id='about'></a>
